@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+use App\Models\Profile;
 
 class User extends Authenticatable
 {
@@ -22,6 +23,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'mobile',
+        'address',
+        'job_title',
+        'location',
+        'website',
+        'github',
+        'twitter',
+        'instagram',
+        'facebook',
+        'avatar',
     ];
 
     /**
@@ -57,4 +69,5 @@ class User extends Authenticatable
             ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
     }
+
 }

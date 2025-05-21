@@ -1,9 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MataKuliahController;
-use App\Http\Controllers\TugasController;
 use Livewire\Volt\Volt;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TugasController;
+use App\Http\Controllers\MataKuliahController;
+use App\Http\Controllers\ProfileController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +23,8 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
     Route::resource('tugas', TugasController::class);
     Route::resource('mataKuliah', MataKuliahController::class);
+    Route::resource('profiles', ProfileController::class)->middleware('auth');
+
 });
 
 require __DIR__.'/auth.php';
